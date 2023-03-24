@@ -33,6 +33,7 @@ input LessonInput {
   name: String!
   startDate: String!
   endDate: String!
+  students: [ID!]! = []
 }
 
 input AssginStudentToLessonInput {

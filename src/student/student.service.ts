@@ -1,4 +1,4 @@
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from './student.enity';
@@ -22,5 +22,13 @@ export class StudentService {
 
   async getStudentById(id: string): Promise<Student> {
     return this.studentRepository.findOneOrFail({ where: { id } });
+  }
+
+  async getManyStudents(studentIds: string[]): Promise<Student[]> {
+    return this.studentRepository.find({
+      where: {
+        id: In(studentIds),
+      },
+    });
   }
 }

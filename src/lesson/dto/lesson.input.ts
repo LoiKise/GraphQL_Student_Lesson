@@ -1,4 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, InputType, ID } from '@nestjs/graphql';
 
 @InputType()
 export class LessonInput {
@@ -10,4 +10,7 @@ export class LessonInput {
 
   @Field()
   endDate: string;
+
+  @Field(() => [ID], { defaultValue: [] })
+  students: string[];
 }
